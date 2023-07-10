@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+
+{% block titulo %}{% endblock titulo %}
+{% block img %}{% endblock img %}
+    
+{% block content %}
+<h2 class="pt-2 ps-4">Ingreso de Vehiculos</h2>
+<form action="/vehiculo/add/register" method="post" class="ps-4 pt-2">
+    {% csrf_token %}
+    Marca:<br>
+    <select name="marca">
+        <option value="Fiat">Fiat</option>
+        <option value="Chevrolet">Chevrolet</option>
+        <option value="Ford">Ford</option>
+        <option value="Toyota">Toyota</option>
+    </select>
+    <br><br>
+    Modelo:<br>
+    <input type="text" name="modelo">
+    <br><br>
+    Serial Carroceria: <br>
+    <input type="text" name="s_carroceria">
+    <br><br>
+    Serial Motor: <br>
+    <input type="text" name="s_motor">
+    <br><br>
+    Categoria: <br>
+    <select name="categoria">
+        <option value="Particular" selected>Particular</option>
+        <option value="Transporte">Transporte</option>
+        <option value="Carga">Carga</option>
+    </select>
+    <br><br>
+    Precio: <br>
+    <input type="number" name="precio">
+    <br><br>
+    <input type="submit" value="Enviar" class="btn btn-success">
+</form>
+{% endblock content %}

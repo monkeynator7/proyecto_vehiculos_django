@@ -1,0 +1,21 @@
+{% extends 'index.html' %}{% load crispy_forms_tags %}
+{% block titulo %}{% endblock titulo %}
+{% block img %}{% endblock img %}
+
+{% block content %}
+<div class="container py-5">
+    <h1>Registro de Usuario</h1>
+    <form method="POST">
+        {% csrf_token %} {{ register_form|crispy }}
+        <h6>
+            {{ form.can_add_vehiculo}}
+            <label for="{{ form.can_add_vehiculo.id_for_label }}"></label>
+        </h6>
+        <button class="btn btn-success" type="submit">Registrarse</button>
+    </form>
+    <p class="text-center">
+        Si ya tienes tu usuario, inicia sesión
+        <a href="/login">aquí</a>
+    </p>
+</div>
+{% endblock content %}

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load bootstrap5 %} {% bootstrap_css %} {% bootstrap_javascript %}
+    {% bootstrap_messages %}
+    <title>Catalogo de Vehiculos</title>
+</head>
+
+<body>
+    {% block navbar %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Vehiculos</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+                    </li>
+
+                    {% if perms.vehiculo.can_add_vehiculo and user.is_staff and user.is_superuser %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/vehiculo/add">Agregar</a>
+                    </li>
+                    {% else %}
+                    <li></li>
+                    {% endif %}
+
+                    {% if perms.vehiculo.visualizar_catalogo %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/vehiculo/listado">Listar</a>
+                    </li>
+                    {% else %}
+                    <li></li>
+                    {% endif %}
+                </ul>
+                <ul class="d-flex list-unstyled">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link link-light" href="/vehiculo/logout">Salir</a>
+                    </li>
+                    <li class="nav-item link-light pt-2 pe-2 ">
+                        Bienvenido {{user.username}}!
+                    </li>
+                    {% else %}
+                    <li class="nav-item ">
+                        <a class="nav-link link-light" href="/vehiculo/login">Login</a>
+                    </li>
+                </ul>
+                {% endif %}
+
+                <!-- <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form> -->
+            </div>
+        </div>
+    </nav>
+    {% endblock navbar %}
+    {% block titulo %}
+    <h1 class="text-center pt-2">Catalogo de Vehículos</h1>
+    {% endblock titulo %}
+
+    {% block img %}
+    <div class="container">
+        <img class="container-fluid"
+            src="https://cf-cdn-v1.cupraofficial.at/media/ModelSlider_Item_Image_Component/3884-71390-46237-image/dh-1340-c92b7e/5bc310aa/1686636751/cupra-ateca.png">
+    </div>
+    {% endblock img %}
+
+    
+    {% block content %}
+        
+    {% endblock content %}
+        
+    <!-- {% block form %}{% endblock form %}
+    {% block register %}{% endblock register %}
+    {% block login %}{% endblock login %}
+    {% block listado %}{% endblock listado %} -->
+    {% block footer %}
+    <footer class="text-center text-lg-start bg-light text-muted mt-3">
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+            <div class="me-5 d-none d-lg-block">
+                <span>Para más información puedes revisar aquí:</span>
+            </div>
+            <div>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </section>
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!-- Content -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <i class="fas fa-gem me-3"></i>Monica Carvajal Romero
+                        </h6>
+                        <p>
+                            Creado para la practica de consolidación del modulo número 6 de trabajo en Django. 
+                        </p>
+                    </div>
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Herramientas
+                        </h6>
+                        <p>
+                            <a href="#" class="text-reset">Django</a>
+                        </p>
+                        <p>
+                            <a href="#" class="text-reset">Bootstrap</a>
+                        </p>
+                        <p>
+                            <a href="#" class="text-reset">HTML</a>
+                        </p>
+                        <p>
+                            <a href="#" class="text-reset">Python</a>
+                        </p>
+                    </div>
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Contacto
+                        </h6>
+                        <p>
+                            <a href="https://github.com/monkeynator7" class="text-reset">Github</a>
+                        </p>
+                        <p>
+                            <a href="https://www.linkedin.com/in/monicarvajalcl/" class="text-reset">Linkedin</a>
+                        </p>
+                    </div>
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                        <p><i class="fas fa-home me-3"></i> Concepción, Chile</p>
+                        <p><i class="fas fa-phone me-3"></i> +569 82993991</p>
+                        <p><i class="fas fa-print me-3"></i> mcarvajalr@icloud.com</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2023 Copyright:
+            <a class="text-reset fw-bold" href="https://github.com/monkeynator7">Monica Carvajal Romero</a>
+        </div>
+    </footer>
+    {% endblock footer %}
+
+</body>
+
+</html>
