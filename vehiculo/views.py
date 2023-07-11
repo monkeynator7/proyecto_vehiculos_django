@@ -18,7 +18,7 @@ def index_view(request):
     template_name = 'index.html'
     return render(request, template_name)
 
-
+@permission_required(perm='visualizar_catalogo', login_url='/vehiculo/login')
 def listado_view(request):
     vehiculos = Vehiculo.objects.all()
     context = {
