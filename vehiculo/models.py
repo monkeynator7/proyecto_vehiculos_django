@@ -32,6 +32,6 @@ class Vehiculo(models.Model):
     
     class Meta:
         permissions = (
-            ("visualizar_catalogo", "visualizar_catalogo"),
-            ("can_add_vehiculo", "can_add_vehiculo"),
+            ("visualizar_catalogo", "Puede visualizar Catálogo de Vehiculos"),
+            ("can_add_vehiculo", "Puede Agregar Vehiculos"),
         )
